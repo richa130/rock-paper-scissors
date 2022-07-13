@@ -3,17 +3,30 @@
     <head>
         <meta charset="utf-8">
         <title>Rock, Paper, Scissors!</title>
-        <style rel="stylesheet" href="style.css"></style>
-        <script src="rps.js"></script>
+        <link rel="stylesheet" href="style.css">
+        <script src="rps.js" defer></script>
     </head>
 
     <body>
-        <span>I pick...</span>
-        <button>Rock</button>
-        <button>Paper</button>
-        <button>Scissors</button>
+        <div class="score">
+            <span>My score: 0</span>
+            <span>Round 1</span>
+            <span>Computer's score: 0</span>
+        </div>
 
-        <span>The computer picks...</span>
-        <div></div>
+        <div class="game">
+            <div class="player">
+                <span>I pick...</span>
+                <button class="rock">Rock</button>
+                <button class="paper">Paper</button>
+                <button class="scissors">Scissors</button>
+            </div>
+
+            <div class="computer">
+                <span>The computer picks...</span>
+                <div class="comp-selection"></div>
+                <span class="winner"></span>
+            </div>
+        </div>
     </body>
 </html>

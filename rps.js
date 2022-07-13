@@ -1,3 +1,29 @@
+const rock = document.querySelector('.rock');
+const paper = document.querySelector('.paper');
+const scissors = document.querySelector('.scissors');
+
+const compSelectionText = document.querySelector('.comp-selection');
+const winner = document.querySelector('.winner');
+
+rock.addEventListener('click', playRoundUI);
+paper.addEventListener('click', playRoundUI);
+scissors.addEventListener('click', playRoundUI);
+
+function playRoundUI(e) {
+    e.target.style.border = '2px solid black';
+
+    playerSelection = e.target.textContent.toLowerCase(); // target gets the actual html element, text content gets its text (r,p,s)
+    computerSelection = computerPlay();
+    compSelectionText.textContent = computerSelection; 
+
+    console.log(`Player selection: ${playerSelection}`);
+    console.log(`Computer selection: ${computerSelection}`);
+
+    result = playRound(playerSelection, computerSelection);
+    winner.textContent = `The player ${result}`;
+}
+
+
 function random_three() {
     return Math.floor(Math.random() * 3) + 1;
 }
@@ -54,7 +80,6 @@ function playRound(playerSelection, computerSelection) {
         }
     }
 }
-
 
 /* // logic that plays 5 rounds: 
 function game() {
