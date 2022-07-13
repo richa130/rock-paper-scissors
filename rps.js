@@ -55,6 +55,8 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
+
+/* // logic that plays 5 rounds: 
 function game() {
     let playerScore = 0;
     let computerScore = 0;
@@ -88,5 +90,4 @@ function game() {
         console.log(`You lose with a score of ${playerScore}. Better luck next time!`);
     }
 }
-
-game();
+*/
