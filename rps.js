@@ -2,13 +2,63 @@
 
 // add an eventListener to each player button
 const playerChoices = document.querySelectorAll('.player-choices button');
-playerChoices.forEach(btn => btn.addEventListener('click', e => logChoice(e)));
+playerChoices.forEach(btn => btn.addEventListener('click', e => startRound(e)));
 
-function logChoice(e) {
-    console.log(e);
-    console.log(e.target);
+const playerScoreText = document.querySelector('.player-score');
+const computerScoreText = document.querySelector('.computer-score');
+
+const resultLog = document.querySelector('.score');
+
+let playerScore = 0;
+let computerScore = 0;
+
+function startRound(e) {
+        let playerChoice = e.target.textContent.toLowerCase();
+        let computerChoice = computerPlay();
+
+        let result = playRound(playerChoice, computerChoice);
+    
+        if(result == "w") {
+            playerScore += 1;
+            playerScoreText.textContent = `Player score: ${playerScore}`;
+    
+            resultLog.textContent = `You picked ${playerChoice} and the computer picked ${computerChoice}, so you won this round!`;
+        }
+        else if(result == "l") {
+            computerScore += 1;
+            computerScoreText.textContent = `Computer score: ${computerScore}`;
+    
+            resultLog.textContent = `You picked ${playerChoice} and the computer picked ${computerChoice}, so you lost this round.`;
+        }
+        else { // if result == t
+            let playerCapital = playerChoice[0].toUpperCase() + playerChoice.slice(1); // capitalizing the first letter of playerChoice
+
+            resultLog.textContent = `${playerCapital} and ${computerChoice}. It's a tie round!`;
+        }
+
+    if(playerScore == 5) {
+        resultLog.textContent = `You won the game ${playerScore} to ${computerScore}. Great Job!\n`;
+
+        const btn = document.createElement('button');
+        btn.textContent = "Play again";
+        resultLog.appendChild(btn);
+
+        btn.addEventListener('click', () => location.reload());
+
+        playerChoices.forEach(choice => choice.disabled = true);
+    }
+    else if(computerScore == 5) {
+        resultLog.textContent = `You lose the game ${playerScore} to ${computerScore}. Better luck next time!\n`;
+
+        const btn = document.createElement('button');
+        btn.textContent = "Play again";
+        resultLog.appendChild(btn);
+
+        btn.addEventListener('click', () => location.reload());
+
+        playerChoices.forEach(choice => choice.disabled = true);
+    }
 }
-
 
 function random_three() {
     return Math.floor(Math.random() * 3) + 1;
@@ -33,72 +83,36 @@ function computerPlay() {
 function playRound(playerSelection, computerSelection) {
     if(playerSelection == "rock") {
         if(computerSelection == "rock") {
-            return "Tie";
+            return "t";
         }
         if(computerSelection == "paper") {
-            return "Lose";
+            return "l";
         }
         if(computerSelection == "scissors") {
-            return "Win";
+            return "w";
         }
     }
     else if(playerSelection == "paper") {
         if(computerSelection == "rock") {
-            return "Win";
+            return "w";
         }
         if(computerSelection == "paper") {
-            return "Tie";
+            return "t";
         }
         if(computerSelection == "scissors") {
-            return "Lose";
+            return "l";
         }
 
     }
     else if(playerSelection == "scissors") {
         if(computerSelection == "rock") {
-            return "Lose";
+            return "l";
         }
         if(computerSelection == "paper") {
-            return "Win";
+            return "w";
         }
         if(computerSelection == "scissors") {
-            return "Tie"
+            return "t"
         }
     }
 }
-
-/* // logic that plays 5 rounds: 
-function game() {
-    let playerScore = 0;
-    let computerScore = 0;
-    let playerSelection;
-    let computerSelection;
-    let result;
-
-    for (let i = 0; i < 5; i++) {
-        playerSelection = prompt("Pick a choice (rock, paper, or scissors): ").toLowerCase();
-        computerSelection = computerPlay();
-
-        result = playRound(playerSelection, computerSelection);
-
-        if(result == "Win") {
-            playerScore++;
-        }
-        else if(result == "Lose") {
-            computerScore++;
-        }
-
-        console.log(`Round ${i}: ${result}! You picked ${playerSelection} and the computer picked ${computerSelection}.`);
-    }
-
-    if(playerScore > computerScore) {
-        console.log(`Good Job! You won with a score of ${playerScore}.`);
-    }
-    else if(playerScore == computerScore) {
-        console.log(`You tied with a score of ${playerScore}. At least you didn't lose?`);
-    }
-    else {
-        console.log(`You lose with a score of ${playerScore}. Better luck next time!`);
-    }
-}
-*/

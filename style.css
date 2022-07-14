@@ -17,7 +17,7 @@ body {
     gap: 20px;
     justify-content: center;
     flex-flow: wrap;
-    margin: 75px;
+    margin: 50px;
 }
 
 .player, .computer {
@@ -34,10 +34,11 @@ body {
 
 .player-choices, .computer-choices {
     display: flex;
+    flex-flow: wrap;
     gap: 15px;
 }
 
-button {
+.game button {
     background-color: lightgray;
     width: 150px;
     height: 150px;
@@ -47,5 +48,6 @@ button {
 
 .score {
     padding-left: 100px;
+    padding-bottom: 30px;
     font-size: 20px;
 }
