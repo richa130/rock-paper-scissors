@@ -1,26 +1,12 @@
-const rock = document.querySelector('.rock');
-const paper = document.querySelector('.paper');
-const scissors = document.querySelector('.scissors');
+"use strict";
 
-const compSelectionText = document.querySelector('.comp-selection');
-const winner = document.querySelector('.winner');
+// add an eventListener to each player button
+const playerChoices = document.querySelectorAll('.player-choices button');
+playerChoices.forEach(btn => btn.addEventListener('click', e => logChoice(e)));
 
-rock.addEventListener('click', playRoundUI);
-paper.addEventListener('click', playRoundUI);
-scissors.addEventListener('click', playRoundUI);
-
-function playRoundUI(e) {
-    e.target.style.border = '2px solid black';
-
-    playerSelection = e.target.textContent.toLowerCase(); // target gets the actual html element, text content gets its text (r,p,s)
-    computerSelection = computerPlay();
-    compSelectionText.textContent = computerSelection; 
-
-    console.log(`Player selection: ${playerSelection}`);
-    console.log(`Computer selection: ${computerSelection}`);
-
-    result = playRound(playerSelection, computerSelection);
-    winner.textContent = `The player ${result}`;
+function logChoice(e) {
+    console.log(e);
+    console.log(e.target);
 }
 
 

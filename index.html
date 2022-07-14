@@ -3,30 +3,33 @@
     <head>
         <meta charset="utf-8">
         <title>Rock, Paper, Scissors!</title>
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="style2.css">
         <script src="rps.js" defer></script>
     </head>
 
     <body>
-        <div class="score">
-            <span>My score: 0</span>
-            <span>Round 1</span>
-            <span>Computer's score: 0</span>
-        </div>
+        <div class="header">Rock, Paper, Scissors! First to 5 points wins.</div>
 
         <div class="game">
             <div class="player">
-                <span>I pick...</span>
-                <button class="rock">Rock</button>
-                <button class="paper">Paper</button>
-                <button class="scissors">Scissors</button>
+                <span class="player-score">Player score: 0</span>
+                <div class="player-choices">
+                    <button>Rock</button>
+                    <button>Paper</button>
+                    <button>Scissors</button>
+                </div>
             </div>
-
+    
             <div class="computer">
-                <span>The computer picks...</span>
-                <div class="comp-selection"></div>
-                <span class="winner"></span>
+                <span class="computer-score">Computer score: 0</span>
+                <div class="computer-choices">
+                    <button>Rock</button>
+                    <button>Paper</button>
+                    <button>Scissors</button>
+                </div>
             </div>
         </div>
+
+        <div class="score"></div>
     </body>
 </html>
